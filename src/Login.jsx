@@ -81,36 +81,8 @@ const Login = () => {
             <form
               onSubmit={handleSetTime}
               className="w-full max-w-xs flex flex-col items-center"
-            >
-              <div className="flex space-x-4">
-                <input
-                  type="number"
-                  className="w-full p-2 border border-gray-300 rounded-lg"
-                  placeholder="Hours"
-                  value={hours}
-                  onChange={handleHoursChange}
-                />
-                <input
-                  type="number"
-                  className="w-full p-2 border border-gray-300 rounded-lg"
-                  placeholder="Minutes"
-                  value={minutes}
-                  onChange={handleMinutesChange}
-                />
-              </div>
-            </form>
+            ></form>
             <div className="w-full flex-1 mt-8">
-              <div className="flex flex-col items-center">
-                <div className="w-full max-w-xs font-bold shadow-sm rounded-lg py-3 bg-red-100 text-gray-800 flex items-center justify-center transition-all duration-300 ease-in-out focus:outline-none hover:shadow focus:shadow-sm focus:shadow-outline mt-4">
-                  <div className="bg-white p-2 rounded-full">{gmtTime}</div>
-                  <span className="ml-4">Current GMT</span>
-                </div>
-                {message && (
-                  <div className="mt-4 text-lg font-semibold text-green-600">
-                    {message}
-                  </div>
-                )}
-              </div>
               <br />
               <div className="mx-auto max-w-xs">
                 <img
@@ -119,7 +91,6 @@ const Login = () => {
                   className="mx-8"
                 />
                 <br />
-
                 <p className="mt-6 text-xs text-gray-600 text-center">
                   I agree to abide by Cartesian Kinetics
                   <a
@@ -138,6 +109,13 @@ const Login = () => {
                 </p>
               </div>
             </div>
+            <button
+              type="button"
+              onClick={handleSignIn}
+              className="mt-4 w-full max-w-xs font-bold shadow-sm rounded-lg py-3 bg-red-500 text-white flex items-center justify-center transition-all duration-300 ease-in-out focus:outline-none hover:shadow focus:shadow-sm focus:shadow-outline"
+            >
+              Start
+            </button>
           </div>
         </div>
         <div className="flex-1 bg-green-100 text-center hidden lg:flex">

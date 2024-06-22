@@ -4,7 +4,7 @@ const Dashboard = () => {
   const [color, setColor] = useState("bg-red-500");
 
   useEffect(() => {
-    const colors = ["bg-red-500", "bg-white-500"];
+    const colors = ["bg-red-500", "bg-white"];
     let currentIndex = 0;
 
     const intervalId = setInterval(() => {
@@ -17,7 +17,7 @@ const Dashboard = () => {
 
   return (
     <div
-      className={`min-h-screen ${color} flex items-center justify-center transition-colors duration-5000`}
+      className={`min-h-screen ${color} flex items-center justify-center transition-colors duration-[5000ms]`}
     >
       <h1 className="text-4xl font-bold text-gray-900">W.A.C-APP</h1>
     </div>
