@@ -19,7 +19,7 @@ const Dashboard = () => {
     <div
       className={`min-h-screen ${color} flex items-center justify-center transition-colors duration-[5000ms]`}
     >
-      <h1 className="text-4xl font-bold text-gray-900">W.A.C-APP</h1>
+      <h1 className="text-4xl font-bold text-gray-900">E-Ultras Winners</h1>
     </div>
   );
 };
