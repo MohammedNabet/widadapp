@@ -75,7 +75,7 @@ const Login = () => {
       <div className="max-w-screen-xl m-0 sm:m-10 bg-white shadow sm:rounded-lg flex justify-center flex-1">
         <div className="lg:w-1/2 xl:w-5/12 p-6 sm:p-12">
           <div>
-            <h1>W.A.C-APP</h1>
+            <h1>W.A.C-APP/v.0.0.1</h1>
           </div>
           <div className="mt-12 flex flex-col items-center">
             <form
@@ -98,7 +98,6 @@ const Login = () => {
                   onChange={handleMinutesChange}
                 />
               </div>
-              
             </form>
             <div className="w-full flex-1 mt-8">
               <div className="flex flex-col items-center">
@@ -120,7 +119,7 @@ const Login = () => {
                   className="mx-8"
                 />
                 <br />
-               
+
                 <p className="mt-6 text-xs text-gray-600 text-center">
                   I agree to abide by Cartesian Kinetics
                   <a
