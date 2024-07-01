@@ -10,7 +10,7 @@ const Dashboard = () => {
     const intervalId = setInterval(() => {
       currentIndex = (currentIndex + 1) % colors.length;
       setColor(colors[currentIndex]);
-    }, 5000);
+    }, 15000);
 
     return () => clearInterval(intervalId);
   }, []);
