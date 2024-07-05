@@ -5,25 +5,33 @@ const Dashboard = () => {
 
   useEffect(() => {
     const updateColor = () => {
-      // Get the current time in GMT
       const now = new Date();
-      const gmtSeconds = now.getUTCMinutes() * 60 + now.getUTCSeconds();
+      const secondsSinceMidnight =
+        now.getUTCHours() * 3600 +
+        now.getUTCMinutes() * 60 +
+        now.getUTCSeconds();
+      const interval = Math.floor(secondsSinceMidnight / 15) % 2;
 
-      // Determine the color based on the 15-second interval
-      const interval = Math.floor(gmtSeconds / 15) % 2; // 0 or 1
-
-      // Set the color based on the interval
       setColor(interval === 0 ? "bg-red-500" : "bg-white");
     };
 
     // Initial color update
     updateColor();
 
-    // Set up an interval to update the color every second
-    const intervalId = setInterval(updateColor, 1000);
+    // Calculate time until the next 15-second interval
+    const now = new Date();
+    const secondsToNextInterval = 15 - (now.getUTCSeconds() % 15);
+    const timeoutId = setTimeout(() => {
+      updateColor();
+      // Set up the interval to run every 15 seconds
+      const intervalId = setInterval(updateColor, 15000);
 
-    // Clean up interval on component unmount
-    return () => clearInterval(intervalId);
+      // Clean up interval on component unmount
+      return () => clearInterval(intervalId);
+    }, secondsToNextInterval * 1000);
+
+    // Clean up timeout on component unmount
+    return () => clearTimeout(timeoutId);
   }, []);
 
   return (
