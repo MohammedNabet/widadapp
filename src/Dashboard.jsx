@@ -15,23 +15,37 @@ const Dashboard = () => {
       setColor(interval === 0 ? "bg-red-500" : "bg-white");
     };
 
-    // Initial color update
-    updateColor();
-
-    // Calculate time until the next 15-second interval
-    const now = new Date();
-    const secondsToNextInterval = 15 - (now.getUTCSeconds() % 15);
-    const timeoutId = setTimeout(() => {
+    const startColorChange = () => {
+      // Initial color update
       updateColor();
-      // Set up the interval to run every 15 seconds
-      const intervalId = setInterval(updateColor, 15000);
 
-      // Clean up interval on component unmount
-      return () => clearInterval(intervalId);
-    }, secondsToNextInterval * 1000);
+      // Calculate time until the next 15-second interval
+      const now = new Date();
+      const secondsToNextInterval = 15 - (now.getUTCSeconds() % 15);
+      const timeoutId = setTimeout(() => {
+        updateColor();
+        // Set up the interval to run every 15 seconds
+        const intervalId = setInterval(updateColor, 15000);
 
-    // Clean up timeout on component unmount
-    return () => clearTimeout(timeoutId);
+        // Clean up interval on component unmount
+        return () => clearInterval(intervalId);
+      }, secondsToNextInterval * 1000);
+
+      // Clean up timeout on component unmount
+      return () => clearTimeout(timeoutId);
+    };
+
+    startColorChange();
+
+    // Set timeout to reset color change logic after 1 day (24 hours)
+    const oneDayTimeoutId = setTimeout(() => {
+      startColorChange();
+    }, 24 * 60 * 60 * 1000);
+
+    // Clean up all timeouts and intervals on component unmount
+    return () => {
+      clearTimeout(oneDayTimeoutId);
+    };
   }, []);
 
   return (
